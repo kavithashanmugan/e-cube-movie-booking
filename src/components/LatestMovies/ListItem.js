@@ -1,44 +1,81 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import { connect } from "react-redux";
-import { getLatestMovies} from '../../actions';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import FolderIcon from "@material-ui/icons/Folder";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Button from "@material-ui/core/Button";
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    maxWidth: '36ch',
+    flexGrow: 1,
+    maxWidth: 200,
+  },
+  demo: {
     backgroundColor: theme.palette.background.paper,
   },
-  inline: {
-    display: 'inline',
+  title: {
+    margin: theme.spacing(4, 0, 2),
   },
 }));
 
-let AlignItemsList=(movies)=>(
-    movies ?  movies.map((movie,index)=> {
-  return(
-      <div key={index}>
-          <h1>{movie.title}</h1>
-      </div>
-  )
-    })
-    :null);
+// function generate(element) {
+//   return [0, 1, 2].map((value) =>
+//     React.cloneElement(element, {
+//       key: value,
+//     }),
+//   );
+// }
 
-const mapStateToProps = (state)=>(
-    {
-        movies: state.movies
-    }
-)
-const mapDispatchToProps = {
-    getLatestMovies : getLatestMovies
+export default function InteractiveList(arr) {
+  console.log("arrrrr", arr.arr);
+  const classes = useStyles();
+  const [secondary, setSecondary] = React.useState(false);
+
+  return (
+    <div>
+      {arr.arr.map((x, i) => (
+        <div className={classes.root}>
+          <Typography variant="h6" className={classes.title}>
+            Latest Movies
+          </Typography>
+          {/* <Grid container spacing={3}>
+        <Grid item xs={12} md={4}> */}
+          <div key={i}>
+            {/*  */}
+            <div className={classes.demo}>
+              <List>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <FolderIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={x ? x : null}
+                    secondary={secondary ? "Secondary text" : null}
+                  />
+                  <ListItemSecondaryAction>
+                    <Button variant="contained" color="primary" edge="end">
+                      Book Now
+                    </Button>
+                  </ListItemSecondaryAction>
+                </ListItem>
+                
+              </List>
+            </div>
+          </div>
+          {/* </Grid>
+      </Grid> */}
+        </div>
+      ))}
+    </div>
+  );
 }
-
-AlignItemsList = connect(mapStateToProps,mapDispatchToProps)(AlignItemsList);
-
-export default AlignItemsList;

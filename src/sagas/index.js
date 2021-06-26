@@ -2,11 +2,8 @@ import { put, takeLatest, all, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 
-// function* fetchNews() {
-//   const json = yield fetch('https://ngapi4.herokuapp.com/api/getProducts')
-//         .then(response => response.json(), );    
-//   yield put({ type: "NEWS_RECEIVED", json: json, });
-// }
+
+//GET LATEST MOVIES
 function* getLatestMovies(){
   function getLatestMoviesApi() {
     return axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=2ed3d431fad14b46d4f23241678d1d88&language=en-US&page=1')
@@ -23,8 +20,27 @@ function* getLatestMovies(){
    
   yield put({ type: "LATEST_MOVIES_RECEIVED", latestMovies:data });
 }
+
+//GET POPULAR MOVIES
+function* getPopularMovies(){
+  function getPopularMoviesApi() {
+    return axios.get('https://api.themoviedb.org/3/movie/popular?api_key=2ed3d431fad14b46d4f23241678d1d88&language=en-US&page=1')
+  .then(function (response) {
+    const data = response.data;
+    console.log("hello",data)
+    return data;
+  })
+   
+  }
+
+  console.log("get popular movies",getPopularMoviesApi())
+        let  data  = yield call(getPopularMoviesApi);
+   
+  yield put({ type: "POPULAR_MOVIES_RECEIVED", popularMovies:data });
+}
 function* actionWatcher() {
      yield takeLatest('GET_LATEST_MOVIES', getLatestMovies)
+     yield takeLatest('GET_POPULAR_MOVIES',getPopularMovies)
 }
 export default function* rootSaga() {
    yield all([
