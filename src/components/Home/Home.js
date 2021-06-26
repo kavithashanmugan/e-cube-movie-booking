@@ -5,8 +5,9 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import LatestMovies from '../LatestMovies/LatestMovies'
-import PopularMovies from '../Popular/PopularMovies'
-const Home = ({ trending = [], popular = [], topRated = [] }) => {
+import PopularMovies from '../Popular/PopularMovies' 
+import TopRatedMovies from '../TopRated/TopRatedMovies'
+const Home = () => {
   return (
     <Tabs>
       <TabList>
@@ -37,7 +38,7 @@ const Home = ({ trending = [], popular = [], topRated = [] }) => {
       </TabPanel>
       <TabPanel>
         <div className='tab-movies-container'>
-          are
+          <TopRatedMovies/>
           {/* {topRated.map((topRatedMovie) => (
             <LatestMovies
               key={topRatedMovie.id}

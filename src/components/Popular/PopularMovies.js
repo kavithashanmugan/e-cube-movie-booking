@@ -48,11 +48,11 @@ console.log("hellllooo popular",this.props)
           component="img"
                   src={`https://image.tmdb.org/t/p/w500/${x.backdrop_path}`}
                   width="150"
-                  height="100"
+                  height="250"
                   alt={x.title}
                 />
                
-                <Button>Book Now</Button>
+                <Button style={{fontWeight:"bold",fontSize:"15px"}}>Book Now</Button>
                 </Card>
                 </CardActionArea>
               </Grid>

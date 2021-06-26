@@ -16,6 +16,14 @@ const reducer = (state = {}, action) => {
         popularmovies: action.popularMovies.results,
         isLoading: false,
       };
+      case "GET_TOP_RATED_MOVIES":
+      return { ...state, isLoading: true };
+    case "TOP_RATED_MOVIES_RECEIVED":
+      return {
+        ...state,
+        topRatedMovies: action.topRatedMovies.results,
+        isLoading: false,
+      };
     default:
       return state;
   }

@@ -1,10 +1,12 @@
 import React from "react";
-import { getLatestMovies } from "../../actions";
+import { getTopRatedMovies } from "../../actions";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import _ from "lodash";
-import ListItem from "../LatestMovies/ListItem";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+
 import {
   Grid,
   Card,
@@ -19,17 +21,17 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from "@material-ui/core/styles";
 
 
-class LatestMovies extends React.Component {
+class TopRatedMovies extends React.Component {
   componentDidMount() {
-    this.props.getLatestMovies();
+    this.props.getTopRatedMovies();
   }
 
   render() {
    
-
-    const { movies } = this.props;
-
-    if (!_.isEmpty(this.props.movies)) {
+console.log("hellllooo top rated",this.props)
+    const { topRatedMovies } = this.props;
+// return<h1>Popular</h1>
+    if (!_.isEmpty(this.props.topRatedMovies)) {
       return (
         <div className={{"flexGrow":"1"}}>
           <Grid
@@ -39,7 +41,7 @@ class LatestMovies extends React.Component {
             justify="flex-start"
             alignItems="flex-start"
           >
-            {movies.map((x, i) => (
+            {topRatedMovies.map((x, i) => (
               <Grid key={i} item xs={12} sm={6} md={3}>
                       <CardActionArea>
 
@@ -49,9 +51,14 @@ class LatestMovies extends React.Component {
                   src={`https://image.tmdb.org/t/p/w500/${x.backdrop_path}`}
                   width="150"
                   height="250"
+                  alt={x.title}
                 />
-               
+                <Typography gutterBottom variant="h5" component="h2">
+                {x.title}
+          </Typography>
+     
                 <Button style={{fontWeight:"bold",fontSize:"15px"}}>Book Now</Button>
+             
                 </Card>
                 </CardActionArea>
               </Grid>
@@ -65,11 +72,11 @@ class LatestMovies extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ movies: state.movies });
+const mapStateToProps = (state) => ({ topRatedMovies: state.topRatedMovies });
 const mapDispatchToProps = (dispatch) => ({
-  getLatestMovies: () => dispatch(getLatestMovies()),
+  getTopRatedMovies: () => dispatch(getTopRatedMovies()),
 });
 // const mapDispatchToProps = dispatch =>
-//   bindActionCreators({ getLatestMovies }, dispatch);
+//   bindActionCreators({ getPopularMovies }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(LatestMovies);
+export default connect(mapStateToProps, mapDispatchToProps)(TopRatedMovies);
