@@ -54,7 +54,7 @@ console.log("hellllooo popular",this.props)
                 <Typography gutterBottom variant="h5" component="h2">
                 {x.title}
           </Typography>
-                <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>
+          <Link to={`/movie/${x.id}`}> <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>  </Link>
                 </Card>
                 </CardActionArea>
               </Grid>

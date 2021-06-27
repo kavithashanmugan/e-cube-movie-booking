@@ -1,10 +1,11 @@
 import React from "react";
 import { getLatestMovies } from "../../actions";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import _ from "lodash";
 import ListItem from "../LatestMovies/ListItem";
+
 import {
   Grid,
   Card,
@@ -53,7 +54,7 @@ class LatestMovies extends React.Component {
                 <Typography gutterBottom variant="h5" component="h2">
                 {x.title}
           </Typography>
-                <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>
+          <Link to={`/movie/${x.id}`}> <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>  </Link>
                 </Card>
                 </CardActionArea>
               </Grid>
