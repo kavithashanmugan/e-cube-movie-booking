@@ -50,8 +50,10 @@ class LatestMovies extends React.Component {
                   width="150"
                   height="250"
                 />
-               
-                <Button style={{fontWeight:"bold",fontSize:"15px"}}>Book Now</Button>
+                <Typography gutterBottom variant="h5" component="h2">
+                {x.title}
+          </Typography>
+                <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>
                 </Card>
                 </CardActionArea>
               </Grid>

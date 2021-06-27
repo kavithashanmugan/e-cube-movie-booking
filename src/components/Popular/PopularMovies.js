@@ -51,8 +51,10 @@ console.log("hellllooo popular",this.props)
                   height="250"
                   alt={x.title}
                 />
-               
-                <Button style={{fontWeight:"bold",fontSize:"15px"}}>Book Now</Button>
+                <Typography gutterBottom variant="h5" component="h2">
+                {x.title}
+          </Typography>
+                <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>
                 </Card>
                 </CardActionArea>
               </Grid>

@@ -57,7 +57,7 @@ console.log("hellllooo top rated",this.props)
                 {x.title}
           </Typography>
      
-                <Button style={{fontWeight:"bold",fontSize:"15px"}}>Book Now</Button>
+                <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>
              
                 </Card>
                 </CardActionArea>
