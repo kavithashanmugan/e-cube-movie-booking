@@ -57,7 +57,7 @@ console.log("hellllooo top rated",this.props)
                 {x.title}
           </Typography>
      
-          <Link to={`/movie/${x.id}`}> <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>  </Link>
+          <Link to={{pathname:`/movie/${x.id}`,state: { params: { title: x.title, release: x.release_date, image: x.backdrop_path,  ratings: x.vote_average } }}}> <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>  </Link>
              
                 </Card>
                 </CardActionArea>

@@ -21,6 +21,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 
 class LatestMovies extends React.Component {
+  constructor() {
+    super();
+  }
   componentDidMount() {
     this.props.getLatestMovies();
   }
@@ -29,7 +32,7 @@ class LatestMovies extends React.Component {
    
 
     const { movies } = this.props;
-
+console.log("propssss",this.props)
     if (!_.isEmpty(this.props.movies)) {
       return (
         <div className={{"flexGrow":"1"}}>
@@ -54,7 +57,7 @@ class LatestMovies extends React.Component {
                 <Typography gutterBottom variant="h5" component="h2">
                 {x.title}
           </Typography>
-          <Link to={`/movie/${x.id}`}> <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>  </Link>
+          <Link to={{pathname:`/movie/${x.id}`,state: { params: { title: x.title, release: x.release_date, image: x.backdrop_path,  ratings: x.vote_average } }}}> <Button style={{fontWeight:"bold",fontSize:"15px",color:"green"}}>Book Now</Button>  </Link>
                 </Card>
                 </CardActionArea>
               </Grid>

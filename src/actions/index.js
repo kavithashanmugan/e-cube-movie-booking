@@ -11,6 +11,9 @@ export const getPopularMovies=()=>({
 export const getTopRatedMovies=()=>({
     type: 'GET_TOP_RATED_MOVIES'
 })
+export const getMovieDetails=(ID)=>({
+     type: "GET_MOVIE_DETAILS", payload:{ID}
+  })
 // export const getUSLatestNews=() =>({
 
 // type: 'GET_US_LATEST_NEWS'

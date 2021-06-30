@@ -1,11 +1,11 @@
-import { put, takeLatest, all, call } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery, all, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 
 
 //GET LATEST MOVIES
 function* getLatestMovies(){
-  function getLatestMoviesApi() {
+  function getLatestMoviesApi(){
     return axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=2ed3d431fad14b46d4f23241678d1d88&language=en-US&page=1')
   .then(function (response) {
     const data = response.data;
@@ -54,10 +54,26 @@ function* getTopRatedMovies(){
    
   yield put({ type: "TOP_RATED_MOVIES_RECEIVED", topRatedMovies:data });
 }
+
+function* getMovieDetails(action){
+  function getMovieDetailsApi(action){
+    return axios.get(`https://api.themoviedb.org/3/movie/${action.payload.id}?api_key=2ed3d431fad14b46d4f23241678d1d88&language=en-US`)
+  .then(function (response) {
+    const data = response.data;
+    console.log("getting data",data)
+    return data;
+  })
+  }
+  console.log("getting movie details by Id",getMovieDetailsApi(action));
+  let data = yield call(getMovieDetailsApi,action);
+
+yield put({ type: "MOVIE_DETAILS_RECEIVED", movieDetails:data });
+}
 function* actionWatcher() {
      yield takeLatest('GET_LATEST_MOVIES', getLatestMovies)
      yield takeLatest('GET_POPULAR_MOVIES',getPopularMovies)
      yield takeLatest('GET_TOP_RATED_MOVIES',getTopRatedMovies)
+     yield takeEvery('GET_MOVIE_DETAILS',getMovieDetails)
 }
 export default function* rootSaga() {
    yield all([

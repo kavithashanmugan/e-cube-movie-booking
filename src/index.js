@@ -13,9 +13,6 @@ const store = createStore(reducer,applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 
-// <Provider store={store}>
-// <App />
-// </Provider>,
 
 ReactDOM.render(
   <Provider store={store}>
