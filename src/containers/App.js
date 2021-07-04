@@ -10,16 +10,16 @@ import Home from '../components/Home/Home';
 import Grid from '@material-ui/core/Grid';
 import Main from '../Main/Main';
 import TrendingMovies from '../components/carousel/Trending'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import MovieDetails from '../components/MovieDetails/MovieDetails';
 import MovieTicket from '../components/MovieTicket/MovieTicket';
-
+import history from './history'
 
 function App() {
  
   return (
     
-    <Router>
+    <Router history={history}>
     <div>
     <NavBar/>
     <Route exact path='/' component={Main}/>

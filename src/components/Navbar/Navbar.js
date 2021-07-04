@@ -17,8 +17,9 @@ class NavBar extends React.Component {
             <nav className="navbar navbar-inverse">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                 
+                    <Link to="/">
                     <a className="navbar-brand logoText"> <span><img className="logoImg" src={logo}/>Cube Movies </span> </a>
+                    </Link>
                     </div>
                     <div className="collapse navbar-collapse" id="myNavbar">
                    

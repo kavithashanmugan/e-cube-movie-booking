@@ -8,8 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import CardActions from "@material-ui/core/CardActions";
 // import MovieTicket from '../MovieTicket/MovieTicket';
-import Rating from 'react-simple-star-rating'
-import SeatPicker from 'react-seat-picker'
+import Rating from 'react-simple-star-rating';
+import SeatPicker from 'react-seat-picker';
 
 
 

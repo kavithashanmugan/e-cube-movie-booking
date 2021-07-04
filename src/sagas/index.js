@@ -1,7 +1,7 @@
 import { put, takeLatest, takeEvery, all, call } from 'redux-saga/effects';
 import axios from 'axios';
 import { push } from 'react-router-redux';
-
+import history from '../containers/history';
 
 
 
@@ -81,9 +81,11 @@ function* bookMovie(action){
   };
   const moviebooked = yield fetch('http://localhost:6700/bookings', requestOptions)
   .then(response => response.json())
-  .then(data=>console.log("data is ...",data))
+  console.log("moviebooked",moviebooked)
+ 
   // yield put[({type:"MOVIE_BOOKED",  moviedbooked: moviebooked}),put(push(`/movieticket/${moviebooked.movieid}`))]
   yield put({type:"MOVIE_BOOKED",  moviedbooked: moviebooked})
+  history.push({pathname:`/movieticket/${moviebooked.movieId}`,state:{movieId:moviebooked.movieId,selectedDate:moviebooked.selectedDate,selectedSeats:moviebooked.selectedSeats,selectedShowTiming:moviebooked.selectedShowTiming,title:moviebooked.title}})
 }
 
 function* actionWatcher() {

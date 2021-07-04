@@ -1,35 +1,64 @@
-import React from 'react'
+import React from 'react';
+import moment from 'react-moment'
 // import QRCode from "react-qr-code";
-var QRCode = require('qrcode.react');
+import QRCode from "qrcode.react";
+import Container from '@material-ui/core/Container';
 
 
-const MovieTicket = () => {
+class MovieTicket extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state={}
+    }
+    static getDerivedStateFromProps(props) {
+        //const { params } = props.location.state;
+       // console.log("params....",props.location.state)
+        return {
+          id:props.location.state.movieId,
+          title: props.location.state.title,
+          selectedDate: props.location.state.selectedDate,
+          selectedShowTiming: props.location.state.selectedShowTiming,
+          selectedSeats: props.location.state.selectedSeats
+        };
+      }
+    render(){
+        console.log("propssss is",this.props)
+        let selectedSeats = this.state.selectedSeats;
+        console.log("selected seats",selectedSeats)
     return (
-        <div>
+        <Container>
            <h1>Movie Booked!</h1> 
-           <p>Movie Name:<b>The Boss Baby: Family Business</b></p>
-           <p><b>Show timing:6:10 pm</b></p>
-          <p><b>Selected Seats:seat 1,row D,id 19</b></p>
-          <p><b>selectedDate: 2021-07-30</b></p>
+           <p><b>Movie Name:{this.state.title}</b></p>
+           <p><b>Show timing:{this.state.selectedShowTiming}</b></p>
+           <p><b>Seats:
+           <ol>
+      {selectedSeats.map((data) => (
+          <div>
+        <li >{data}</li>
+        </div>
+      ))}
+    </ol>
+    </b>
+    </p>
+          <p><b>selectedDate: {this.state.selectedDate}</b></p>
           <h3>Scan QR Code at entrance of cinema hall</h3>
-           <QRCode
+          <QRCode
             level="Q"
             style={{ width: 256,height:256 }}
-            value={JSON.stringify( {
-                "id": 459151,
-                "movieId": "fxq7Mqh",
-                "title": "The Boss Baby: Family Business",
-                "selectedDate": "2021-07-30T06:00:00.000Z",
-                "selectedShowTiming": "6:10 PM",
-                "selectedSeats": [
-                  "Added seat 1,row D,id 19"
-                ]
-              })}
+            value={JSON.stringify({
+              id: this.state.id,
+              MovieName: this.state.title,
+              Seats: this.state.selectedSeats,
+              showDate:this.state.selectedShowTiming,
+              selectedShowTiming: this.state.selectedShowTiming
+            })}
           />
+          
         
 
-        </div>
+        </Container>
     )
+}
 }
 
 export default MovieTicket

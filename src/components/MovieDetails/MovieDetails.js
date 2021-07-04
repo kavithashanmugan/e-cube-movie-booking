@@ -10,16 +10,9 @@ import DateTimePicker from 'react-datetime-picker';
 import DatePicker from 'react-date-picker';
 import { connect } from 'react-redux';
 import {bookMovie} from '../../actions/index';
+import "./MovieDetails.css";
 //import randomString  from 'randomString';
 var randomstring = require("randomstring");
-
-
-
-
-
-
-//import MovieTicket from './MovieTicket';
-
 
 class MovieDetails extends React.Component {
   constructor(props) {
@@ -45,12 +38,11 @@ this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   selectedTimeChange=(event)=>{
-    // console.log("time change",event.target.value)
+    
     this.setState({
         selectedShowTiming: event.target.value
     })
-    //,() => console.log(this.state.selectedShowTiming));
-    //, () => console.log(this.state.selectedShowTiming));
+   
   }
 
   handleSubmit(event) {
@@ -133,7 +125,7 @@ this.handleSubmit = this.handleSubmit.bind(this);
         return <div className="register-success">Movie Booked  
         <ul>
             <li><Link to="/">Go Back To Movies</Link></li>
-            <li><Link to="/movieticket/:movieId">view Ticket</Link></li>
+            <li><Link to ={{pathname:`/movieticket/${this.state.movieId}`}}>view Ticket</Link></li>
         </ul>
     </div>
       }else{
@@ -159,13 +151,8 @@ this.handleSubmit = this.handleSubmit.bind(this);
         <div>
            
           <MediaControlCard props={this.state}/>
-     
-          </div>
-          <Card>
-          <div>
-              <h1>Select Date</h1>
-            <div>
-
+          <div className="input-container">
+            <h1>Select Date</h1>
             <div>
       <DatePicker
         onChange={(date)=>this.selectedDateChange(date)}
@@ -173,6 +160,19 @@ this.handleSubmit = this.handleSubmit.bind(this);
       />
     </div>
             </div>
+          </div>
+         
+          <div>
+            
+            {/* <div className="input-container">
+            <h1>Select Date</h1>
+            <div>
+      <DatePicker
+        onChange={(date)=>this.selectedDateChange(date)}
+        value={this.state.selectedDate}
+      />
+    </div>
+            </div> */}
             <h1>Select Timings</h1>
             <div>
 
@@ -203,15 +203,7 @@ this.handleSubmit = this.handleSubmit.bind(this);
       </div>
       <hr></hr>
       <button  className="btn first" type="submit" >Submit</button>
-      {/* <Button
-              
-              color="primary"
-            >
-              Book
-            </Button> */}
-            
-            
-      </Card>
+    
       </form>
       </Container>
     );
