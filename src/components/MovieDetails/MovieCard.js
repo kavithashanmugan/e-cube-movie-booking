@@ -7,7 +7,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import CardActions from "@material-ui/core/CardActions";
-import { Button } from "@material-ui/core";
+// import MovieTicket from '../MovieTicket/MovieTicket';
+import Rating from 'react-simple-star-rating'
+import SeatPicker from 'react-seat-picker'
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,11 +37,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MediaControlCard(props) {
+   
   const classes = useStyles();
   const theme = useTheme();
+  const converted = (props.props.ratings * 5 )/10;
 
   return (
     <Container>
+         <Typography component="h1" variant="h1">
+             <hr></hr>
+            Book Your Movie
+            <hr></hr>
+            </Typography>
       <Card className={classes.root}>
         <CardMedia
           className={classes.cover}
@@ -51,19 +63,26 @@ export default function MediaControlCard(props) {
             <Typography component="h2" variant="h2">
               {props.props.title}
             </Typography>
-            <Typography variant="h3" color="textSecondary">
+            <Typography variant="h3" color="textSecondary" >
               {props.props.release}
             </Typography>
-            <Typography variant="h4">{props.props.ratings}</Typography>
+            <Typography variant="h4" style={{"paddingBottom":"25"}}>
+            
+           
+            <Rating
+        ratingValue={converted}
+        size={20}
+        label
+        transition
+        fillColor='orange'
+        emptyColor='gray'
+        stars={5} // Will remove the inline style if applied
+      />
+            
+            </Typography>
+            <Typography variant="h4" style={{"paddingBottom":"25"}}>{props.props.overview}</Typography>
             <CardActions>
-            <Button
-              variant="contained"
-              color="primary"
-              href="#contained-buttons"
-              className={classes.button}
-            >
-              Book
-            </Button>
+           
             </CardActions>
           </CardContent>
         </div>

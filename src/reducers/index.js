@@ -1,4 +1,4 @@
-const reducer = (state = {}, action) => {
+const reducer = (state = {isMovieBooked:false}, action) => {
   switch (action.type) {
     case "GET_LATEST_MOVIES":
       return { ...state, isLoading: true };
@@ -23,6 +23,13 @@ const reducer = (state = {}, action) => {
         ...state,
         topRatedMovies: action.topRatedMovies.results,
         isLoading: false,
+      };
+      case "BOOK_MOVIES":
+      return { ...state, isMovieBooked: false };
+    case "MOVIE_BOOKED":
+      return {
+        ...state,
+        isMovieBooked:true
       };
     default:
       return state;

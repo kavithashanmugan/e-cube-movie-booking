@@ -12,10 +12,9 @@ export const getTopRatedMovies=()=>({
     type: 'GET_TOP_RATED_MOVIES'
 })
 export const getMovieDetails=(ID)=>({
-     type: "GET_MOVIE_DETAILS", payload:{ID}
+     type: 'GET_MOVIE_DETAILS', payload:{ID}
   })
-// export const getUSLatestNews=() =>({
-
-// type: 'GET_US_LATEST_NEWS'
-
-// })
+export const bookMovie=(bookingData)=>({
+    type:'BOOK_MOVIE',
+    payload:bookingData
+})

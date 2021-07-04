@@ -11,7 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import Main from '../Main/Main';
 import TrendingMovies from '../components/carousel/Trending'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import MovieDetails from '../components/MovieDetails/MovieDetails'
+import MovieDetails from '../components/MovieDetails/MovieDetails';
+import MovieTicket from '../components/MovieTicket/MovieTicket';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <NavBar/>
     <Route exact path='/' component={Main}/>
     <Route exact path='/movie/:id' component={MovieDetails}/>
+    <Route exact path='/movieticket' component={MovieTicket}/>
     </div>
     </Router>
   );

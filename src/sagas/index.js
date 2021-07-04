@@ -69,11 +69,26 @@ function* getMovieDetails(action){
 
 yield put({ type: "MOVIE_DETAILS_RECEIVED", movieDetails:data });
 }
+
+function* bookMovie(action){
+  console.log("booking movie hitted")
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({...action.payload})
+  };
+  yield fetch('http://localhost:6700/bookings', requestOptions)
+  .then(response => response.json())
+  .then(data=>console.log("data is ...",data))
+  yield put({type:"MOVIE_BOOKED",  error: false})
+}
+
 function* actionWatcher() {
      yield takeLatest('GET_LATEST_MOVIES', getLatestMovies)
      yield takeLatest('GET_POPULAR_MOVIES',getPopularMovies)
      yield takeLatest('GET_TOP_RATED_MOVIES',getTopRatedMovies)
      yield takeEvery('GET_MOVIE_DETAILS',getMovieDetails)
+     yield takeLatest('BOOK_MOVIE',bookMovie)
 }
 export default function* rootSaga() {
    yield all([

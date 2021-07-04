@@ -1,0 +1,14 @@
+{
+  "bookings": [
+    {
+      "moviedId": "74F9ol0",
+      "title": "Infinite",
+      "selectedDate": "2021-07-13T06:00:00.000Z",
+      "selectedShowTiming": "12:30 PM",
+      "selectedSeats": [
+        "Added seat 5,row B,id 11"
+      ],
+      "id": 1
+    }
+  ]
+}
