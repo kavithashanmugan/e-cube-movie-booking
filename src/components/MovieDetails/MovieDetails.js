@@ -26,6 +26,7 @@ class MovieDetails extends React.Component {
     super(props);
     this.state = {
         loading: false,
+        movieId:randomstring.generate(7),
         selectedDate:new Date(),
         selectedShowTiming:'',
         selectedSeats:[]
@@ -54,12 +55,12 @@ this.handleSubmit = this.handleSubmit.bind(this);
 
   handleSubmit(event) {
     event.preventDefault();
-    const {id, title, selectedDate, selectedShowTiming,selectedSeats} = this.state;
+    const {id,movieId, title, selectedDate, selectedShowTiming,selectedSeats} = this.state;
     console.log("handle submit state is",id,title,selectedDate,selectedShowTiming,selectedSeats)
-    let moviedId = randomstring.generate(7);
+    
     this.props.bookMovie({
         id,
-        moviedId,
+        movieId,
         title,
         selectedDate,
         selectedShowTiming,
@@ -126,15 +127,15 @@ this.handleSubmit = this.handleSubmit.bind(this);
   }
   render() {
    
-     
+     console.log("propssss",this.props)
       if (this.props.isMovieBooked) {
         console.log("som successe",this.state)
-        return <p className="register-success">Movie Booked  
+        return <div className="register-success">Movie Booked  
         <ul>
             <li><Link to="/">Go Back To Movies</Link></li>
-            <li><Link to="/movieticket">view Ticket</Link></li>
+            <li><Link to="/movieticket/:movieId">view Ticket</Link></li>
         </ul>
-    </p>
+    </div>
       }else{
         console.log("some state",this.state)
       const rows = [

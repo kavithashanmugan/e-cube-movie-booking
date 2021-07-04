@@ -68,7 +68,7 @@ function SwipeableTextMobileStepper(tutorialSteps) {
         enableMouseEvents
       >
         {tutorialSteps.tutorialSteps.map((step, index) => (
-          <div key={step.label}>
+          <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
               <img className={classes.img} src={`https://image.tmdb.org/t/p/w500/${step.poster_path}`} alt={step.title} />
             ) : null}

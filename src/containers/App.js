@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Loading from '../components/LatestMovies/Loading';
 import  ListItem from '../components/LatestMovies/ListItem';
 import SwipeableTextMobileStepper from '../components/carousel/carousel';
-import SingleLineGridList from '../components/LatestMovies/Card';
+// import SingleLineGridList from '../components/LatestMovies/Card';
 import Home from '../components/Home/Home';
 import Grid from '@material-ui/core/Grid';
 import Main from '../Main/Main';
@@ -24,7 +24,7 @@ function App() {
     <NavBar/>
     <Route exact path='/' component={Main}/>
     <Route exact path='/movie/:id' component={MovieDetails}/>
-    <Route exact path='/movieticket' component={MovieTicket}/>
+    <Route exact path='/movieticket/:movieId' component={MovieTicket}/>
     </div>
     </Router>
   );

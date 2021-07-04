@@ -1,7 +1,7 @@
 {
   "bookings": [
     {
-      "moviedId": "74F9ol0",
+      "movieId": "74F9ol0",
       "title": "Infinite",
       "selectedDate": "2021-07-13T06:00:00.000Z",
       "selectedShowTiming": "12:30 PM",
@@ -9,6 +9,76 @@
         "Added seat 5,row B,id 11"
       ],
       "id": 1
+    },
+    {
+      "movieId": "3zBdHYS",
+      "title": "The Tomorrow War",
+      "selectedDate": "2021-07-27T06:00:00.000Z",
+      "selectedShowTiming": "6:10 PM",
+      "selectedSeats": [
+        "Added seat 6,row B,id 12"
+      ],
+      "id": 2
+    },
+    {
+      "movieId": "UPleFUV",
+      "title": "Dilwale Dulhania Le Jayenge",
+      "selectedDate": "2021-07-30T06:00:00.000Z",
+      "selectedShowTiming": "3:15 PM",
+      "selectedSeats": [
+        "Added seat 4,row B,id 10"
+      ],
+      "id": 3
+    },
+    {
+      "id": 637649,
+      "movieId": "N5p9Ygx",
+      "title": "Wrath of Man",
+      "selectedDate": "2021-07-30T06:00:00.000Z",
+      "selectedShowTiming": "6:10 PM",
+      "selectedSeats": [
+        "Added seat 4,row D,id 22"
+      ]
+    },
+    {
+      "movieId": "nqg0HOo",
+      "title": "Infinite",
+      "selectedDate": "2021-07-20T06:00:00.000Z",
+      "selectedShowTiming": "6:10 PM",
+      "selectedSeats": [
+        "Added seat 3,row D,id 21"
+      ],
+      "id": 637650
+    },
+    {
+      "movieId": "33tJWZU",
+      "title": "The Godfather: Part II",
+      "selectedDate": "2021-07-21T06:00:00.000Z",
+      "selectedShowTiming": "3:15 PM",
+      "selectedSeats": [
+        "Added seat 3,row D,id 21"
+      ],
+      "id": 637651
+    },
+    {
+      "id": 459151,
+      "movieId": "fxq7Mqh",
+      "title": "The Boss Baby: Family Business",
+      "selectedDate": "2021-07-30T06:00:00.000Z",
+      "selectedShowTiming": "6:10 PM",
+      "selectedSeats": [
+        "Added seat 1,row D,id 19"
+      ]
+    },
+    {
+      "id": 637693,
+      "movieId": "766HN5R",
+      "title": "Spirit Untamed",
+      "selectedDate": "2021-07-21T06:00:00.000Z",
+      "selectedShowTiming": "3:15 PM",
+      "selectedSeats": [
+        "Added seat 4,row E,id 28"
+      ]
     }
   ]
 }

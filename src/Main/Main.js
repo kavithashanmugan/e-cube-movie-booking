@@ -21,7 +21,6 @@ function Main() {
         <Loading/>    
           <Home/>
         <TrendingMovies/>
-    <SingleLineGridList/>
     </Container>
     </div>
   );
